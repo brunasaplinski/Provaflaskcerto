@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <he3>Projeto Flask</h3>
+        <h5>@senaisc</h5>
+    <div>
+        {% include 'nave.html' %}
+    <div>
+        <h1>Bem-vindo, {{context.nome}} a aula Flask</h1>
+        <p><b>Idade:</b>{{context.idade}}</p>
+        <img src = "{{url_for('static', filename = 'img/Senai.png')}}">
+        
+    <div>
+
+{% endblock %}
