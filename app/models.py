@@ -1,5 +1,11 @@
-from app import db
+from app import db, login_manager
 from datetime import datetime
+from flask_login import UserMixin
+#from flask_sqlalchemy import SQLAlchemy
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 class Contato(db.Model):
     id = db.Column(db.Integer, primary_key=True)
