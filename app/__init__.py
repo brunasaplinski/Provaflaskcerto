@@ -6,7 +6,7 @@ from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 
 import os
-load_dotenv('.env')
+load_dotenv()
 
 
 app = Flask(__name__)
