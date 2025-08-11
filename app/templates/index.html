@@ -9,6 +9,11 @@
     <div>
         <h1>Bem-vindo, {{context.nome}} a aula Flask</h1>
         <p><b>Idade:</b>{{context.idade}}</p>
+
+        <a href="{{url_for('cadastro')}}" class="btn btn-primary">Faça o seu cadastro</a>
+        <hr>
+
+        
         <img src = "{{url_for('static', filename = 'img/Senai.png')}}">
         
     <div>

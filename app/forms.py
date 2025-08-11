@@ -8,9 +8,9 @@ from app.models import Contato, User
 
 class Userform(FlaskForm):
     nome = StringField('Nome', validators=[DataRequired()])
-    sobrenome = StringField('Sobrenome', validators=[DataRequired])
-    email = StringField('E-Mail', validators=[DataRequired(),Email()])
-    senha = PasswordField('Senha', validators=[DataRequired])
+    sobrenome = StringField('Sobrenome', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    senha = PasswordField('Senha', validators=[DataRequired()])
     confirmacao_senha = PasswordField('Senha', validators=[DataRequired(), EqualTo('senha')])
     btnSubmit=SubmitField('Cadastrar')
 
