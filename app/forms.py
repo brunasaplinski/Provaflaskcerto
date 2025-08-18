@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
-from app import db, bcrypt   # ✅ importa do seu __init__.py
+from app import db, bcrypt   
 from app.models import Contato, User
 
 
@@ -14,12 +14,12 @@ class Userform(FlaskForm):
     confirmacao_senha = PasswordField('Confirmação da Senha', validators=[DataRequired(), EqualTo('senha')])
     btnSubmit = SubmitField('Cadastrar')
 
-    def validate_email(self, email):   # ✅ corrigido nome do método
+    def validate_email(self, email):   
         if User.query.filter_by(email=email.data).first():
             raise ValidationError("Usuário já cadastrado com esse E-mail!")
 
     def save(self):
-        senha = bcrypt.generate_password_hash(self.senha.data).decode('utf-8')  # ✅ corrigido
+        senha = bcrypt.generate_password_hash(self.senha.data).decode('utf-8')  
         user = User(
             nome=self.nome.data,
             sobrenome=self.sobrenome.data,
