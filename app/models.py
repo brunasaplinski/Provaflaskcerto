@@ -23,3 +23,9 @@ class Contato(db.Model):
     assunto = db.Column(db.String, nullable=True)
     mensagem = db.Column(db.String, nullable=True)
     respondido = db.Column(db.Integer, default=0)
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    data_criação = db.Column(db.DateTime, default=datetime.now())
+    mensagem = db.Column(db.String, nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'),nullable=True)

@@ -6,7 +6,7 @@ from flask_login import login_user, logout_user
 from flask_login import current_user
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def homepage():
     usuario = 'Bruna'
     idade = 17
