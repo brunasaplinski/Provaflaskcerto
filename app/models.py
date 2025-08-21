@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     sobrenome=db.Column(db.String, nullable=True)
     email=db.Column(db.String, nullable=True)
     senha=db.Column(db.String,nullable=True)
+    posts = db.relationship('Post', backref='user',lazy=True)
 
 class Contato(db.Model):
     id = db.Column(db.Integer, primary_key=True)
