@@ -1,6 +1,6 @@
 from app import app, db
 from flask import render_template, url_for, request, redirect
-from app.forms import ContatoForm, Userform, LoginForm
+from app.forms import ContatoForm, Userform, LoginForm, PostForm
 from app.models import Contato
 from flask_login import login_user, logout_user
 from flask_login import current_user

@@ -3,7 +3,7 @@ from wtforms import StringField, SubmitField, PasswordField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
 from app import db, bcrypt
-from app.models import Contato, User
+from app.models import Contato, User, Post
 
 
 class Userform(FlaskForm):
@@ -66,3 +66,16 @@ class LoginForm(FlaskForm):
                 raise Exception('Senha Incorreta!!!')
         else:
             raise Exception('Usuário não encontrado!!!')
+        
+
+class PostForm(FlaskForm):
+    mensagem = StringField('Mensagem', validators=[DataRequired()])
+    btnSubmit = SubmitField('Enviar')
+
+    def save(self, user_id):
+        post = Post(
+            mensagem=self.mensagem.data,
+            user_id=user_id
+        )
+        db.session.add(post)
+        db.session.commit()
