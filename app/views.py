@@ -60,3 +60,11 @@ def cadastro():
 def logout():
     logout_user()
     return redirect(url_for('homepage'))
+
+@app.route('/post/novo/', methods=['GET','POST'])
+def PostNovo():
+    form = PostForm()
+    if form.validate_on_submit():
+        form.save(current_user.id)
+        return redirect(url_for('homepage'))
+    return render_template('post_novo.html', form=form)
