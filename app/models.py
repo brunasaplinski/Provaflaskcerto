@@ -32,7 +32,7 @@ class Post(db.Model):
     data_criação = db.Column(db.DateTime, default=datetime.now())
     mensagem = db.Column(db.String, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'),nullable=True)
-    comentario = db.relationship('PostComentarios', backref='user', lazy=True)
+    comentario = db.relationship('PostComentarios', backref='post', lazy=True)
 
 
     def msg_resumo(self):
