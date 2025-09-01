@@ -75,4 +75,9 @@ def PostLista():
     print(current_user.posts)
     return render_template('post_lista.html', posts=posts)
 
+@app.route('/post/<int:id>')
+def PostDetail(id):
+    post = Post.query.get(id)
+    return render_template('post.html', post=post)
+
 
