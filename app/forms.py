@@ -77,5 +77,19 @@ class PostForm(FlaskForm):
             mensagem=self.mensagem.data,
             user_id=user_id
         )
+
+        db.session.add(post)
+        db.session.commit()
+
+class PostComentarioForm(FlaskForm):
+    mensagem = StringField('Mensagem', validators=[DataRequired()])
+    btnSubmit = SubmitField('Enviar')
+
+    def save(self, user_id, post_id):
+        post = Post(
+            mensagem=self.mensagem.data,
+            user_id=user_id,
+            post_id=user_id
+        )
         db.session.add(post)
         db.session.commit()
