@@ -1,6 +1,6 @@
 from app import app, db
 from flask import render_template, url_for, request, redirect
-from app.forms import ContatoForm, Userform, LoginForm, PostForm
+from app.forms import ContatoForm, Userform, LoginForm, PostForm, PostComentarioForm
 from app.models import Contato, Post
 from flask_login import login_user, logout_user
 from flask_login import current_user
@@ -78,6 +78,10 @@ def PostLista():
 @app.route('/post/<int:id>')
 def PostDetail(id):
     post = Post.query.get(id)
-    return render_template('post.html', post=post)
+    form = PostComentarioForm()
+    if form.validate_on_submit():
+        form.save(current_user.id, id)
+        return redirect(url_for('PostDetail'))
+    return render_template('post.html', post=post, form=form)
 
 
